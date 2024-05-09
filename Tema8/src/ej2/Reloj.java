@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Reloj {
 	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NegativeHourException, NegativeMinuteException, NegativeSecondException {
 
 		int opc;
 		int hora;
@@ -76,7 +76,7 @@ public class Reloj {
 		sc.close();
 	}
 
-	private static void nuevaHora(Hora h) {
+	private static void nuevaHora(Hora h) throws NegativeHourException {
 		int opc;
 		int hora;
 		System.out.println("¿Quiere modificar las horas? 1 Para seguir, en caso negativo cualquier otro número.");
@@ -87,11 +87,15 @@ public class Reloj {
 			System.out.println("Introduzca la nueva cantidad de horas");
 			hora = sc.nextInt();
 			sc.nextLine();
-			h.setHora(hora);
+			try {
+				h.setHora(hora);
+			} catch (NegativeHourException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	private static void nuevoMinuto(Hora h) {
+	private static void nuevoMinuto(Hora h) throws NegativeMinuteException {
 		int opc;
 		int minuto;
 		System.out.println("¿Quiere modificar los minutos? 1 Para seguir, en caso negativo cualquier otro número.");
@@ -102,11 +106,15 @@ public class Reloj {
 			System.out.println("Introduzca la nueva cantidad de minutos");
 			minuto = sc.nextInt();
 			sc.nextLine();
-			h.setMinutos(minuto);
+			try {
+				h.setMinutos(minuto);
+			} catch (NegativeMinuteException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	private static void nuevaSegundo(HoraExacta he) {
+	private static void nuevaSegundo(HoraExacta he) throws NegativeSecondException {
 		int opc;
 		int segundo;
 		System.out.println("¿Quiere modificar los segundos? 1 Para seguir, en caso negativo cualquier otro número.");
@@ -117,7 +125,11 @@ public class Reloj {
 			System.out.println("Introduzca la nueva cantidad de horas");
 			segundo = sc.nextInt();
 			sc.nextLine();
-			he.setSegundo(segundo);
+			try {
+				he.setSegundo(segundo);
+			} catch (NegativeSecondException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
