@@ -5,7 +5,7 @@ public class Temperatura implements Comparable<Temperatura> {
 	int maxima;
 	String fecha;
 
-	public Temperatura(int minima, int maxima, String fecha) {
+	public Temperatura(String fecha, int minima, int maxima) {
 		super();
 
 		this.minima = minima;
@@ -15,35 +15,43 @@ public class Temperatura implements Comparable<Temperatura> {
 		}
 
 	}
+	
+	
+	
+	@Override
+	public boolean equals(Object obj) {
 
-	public int getMinima() {
-		return minima;
+		Temperatura temp = (Temperatura) obj;
+
+		return this.fecha.equals(temp.fecha);
 	}
 
-	public void setMinima(int minima) {
-		this.minima = minima;
-	}
-
-	public int getMaxima() {
-		return maxima;
-	}
-
-	public void setMaxima(int maxima) {
-		this.maxima = maxima;
-	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
+	
 	@Override
 	public int compareTo(Temperatura t) {
 
 		return t.fecha.compareTo(this.fecha);
 	}
+
+
+
+	public int getMinima() {
+		return minima;
+	}
+
+
+
+	public int getMaxima() {
+		return maxima;
+	}
+
+
+
+	public String getFecha() {
+		return fecha;
+	}
+
+
+
 
 }
